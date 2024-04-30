@@ -134,7 +134,7 @@ body {
   align-items: center;
   height: 1.875rem;
   padding: 0 .9375rem;
-  gap: .625rem
+  gap: 8px
 }
 .select__value > * {
   flex: 1 1 auto
@@ -142,7 +142,7 @@ body {
 .select__value:after {
   content: "";
   align-self: stretch;
-  flex: 0 0 25px;
+  flex: 0 0 22px;
   transition: all .3s ease 0s;
   display: flex;
   justify-content: center;
@@ -409,7 +409,7 @@ p:not(:last-child) {
   z-index: 50
 }
 .header__logo {
-  z-index: 50
+  z-index: 70
 }
 .header__logo img {
   transition: all .3s ease 0s
@@ -424,6 +424,15 @@ p:not(:last-child) {
   display: flex;
   justify-content: center;
   align-items: center
+}
+.menu-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #10545d
 }
 .menu-open .menu-header__body {
   left: 0
@@ -475,8 +484,28 @@ p:not(:last-child) {
 }
 .select-language {
   margin-left: -15px;
+  margin-right: 10px;
+  font-size: 24px;
   letter-spacing: -1px;
-  color: #fff
+  color: #fff;
+  z-index: 70
+}
+.has-children > a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px
+}
+.has-children > a:after {
+  content: "";
+  margin-top: 5px;
+  align-self: stretch;
+  flex: 0 0 16px;
+  transition: all .3s ease 0s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url(../img/chevron-down-white.svg) center center/100% no-repeat
 }
 .footer {
   margin-top: 24px;
@@ -1377,6 +1406,11 @@ p:not(:last-child) {
 .swiper-button-lock {
   display: none!important
 }
+@media (min-width:61.99875em) {
+  .select__option {
+    margin-top: -5px
+  }
+}
 @media (min-width:120em) {
   .popup__content {
     padding-top: 4.375rem
@@ -1403,10 +1437,10 @@ p:not(:last-child) {
     font-size: 2rem
   }
   .header__container {
-    padding-top: 1.375rem
+    padding-top: 1.125rem
   }
   .header__container {
-    padding-bottom: 1.375rem
+    padding-bottom: 1.125rem
   }
   .header__logo img {
     width: 21.875rem
@@ -1439,7 +1473,7 @@ p:not(:last-child) {
     width: 21.875rem
   }
   .header-indent {
-    height: 10rem
+    height: 9.6875rem
   }
   .main__container {
     padding-top: 9.375rem
@@ -1716,9 +1750,6 @@ p:not(:last-child) {
   }
 }
 @media (max-width:1400px) {
-  .select__value:after {
-    flex: 0 0 22px
-  }
   .sticker {
     width: 260px
   }
@@ -1803,10 +1834,10 @@ p:not(:last-child) {
     font-size: .875rem
   }
   .header__container {
-    padding-top: .625rem
+    padding-top: .5rem
   }
   .header__container {
-    padding-bottom: .625rem
+    padding-bottom: .5rem
   }
   .header__logo img {
     width: 7.5rem
@@ -1818,7 +1849,7 @@ p:not(:last-child) {
     width: 12.5rem
   }
   .header-indent {
-    height: 3.75rem
+    height: 3.4375rem
   }
   .main__container {
     padding-top: 6.25rem
@@ -2133,6 +2164,12 @@ p:not(:last-child) {
     transition: all .4s ease 0s;
     overflow: auto
   }
+  .menu-header::before {
+    z-index: 60
+  }
+  .icon-menu {
+    z-index: 70
+  }
   .nav-menu {
     gap: 10px;
     flex-direction: column;
@@ -2142,7 +2179,8 @@ p:not(:last-child) {
   }
   .menu-item {
     width: 100%;
-    text-align: left
+    text-align: left;
+    padding: 6px 0
   }
   .sub-menu-wrapper {
     position: relative;
@@ -2156,7 +2194,7 @@ p:not(:last-child) {
   }
   .sub-menu-item {
     position: relative;
-    padding: 10px 0 0 15px;
+    padding: 10px 0 0 20px;
     opacity: 1;
     margin-top: 0;
     z-index: 50
@@ -2164,6 +2202,9 @@ p:not(:last-child) {
   .select-language {
     margin-right: 25px;
     order: 1
+  }
+  .has-children > a:after {
+    display: none
   }
   .main img {
     height: 60vh
@@ -2525,24 +2566,24 @@ p:not(:last-child) {
       font-size: calc(.875rem + 1.125 * (100vw - 20rem)/ 100)
     }
   }
-  @supports (padding-top:clamp(0.625rem ,0.475rem + 0.75vw ,1.375rem)) {
+  @supports (padding-top:clamp(0.5rem ,0.375rem + 0.625vw ,1.125rem)) {
     .header__container {
-      padding-top: clamp(.625rem ,.475rem + .75vw ,1.375rem)
+      padding-top: clamp(.5rem ,.375rem + .625vw ,1.125rem)
     }
   }
-  @supports not (padding-top:clamp(0.625rem ,0.475rem + 0.75vw ,1.375rem)) {
+  @supports not (padding-top:clamp(0.5rem ,0.375rem + 0.625vw ,1.125rem)) {
     .header__container {
-      padding-top: calc(.625rem + .75 * (100vw - 20rem)/ 100)
+      padding-top: calc(.5rem + .625 * (100vw - 20rem)/ 100)
     }
   }
-  @supports (padding-bottom:clamp(0.625rem ,0.475rem + 0.75vw ,1.375rem)) {
+  @supports (padding-bottom:clamp(0.5rem ,0.375rem + 0.625vw ,1.125rem)) {
     .header__container {
-      padding-bottom: clamp(.625rem ,.475rem + .75vw ,1.375rem)
+      padding-bottom: clamp(.5rem ,.375rem + .625vw ,1.125rem)
     }
   }
-  @supports not (padding-bottom:clamp(0.625rem ,0.475rem + 0.75vw ,1.375rem)) {
+  @supports not (padding-bottom:clamp(0.5rem ,0.375rem + 0.625vw ,1.125rem)) {
     .header__container {
-      padding-bottom: calc(.625rem + .75 * (100vw - 20rem)/ 100)
+      padding-bottom: calc(.5rem + .625 * (100vw - 20rem)/ 100)
     }
   }
   @supports (width:clamp(7.5rem ,4.625rem + 14.375vw ,21.875rem)) {
@@ -2575,14 +2616,14 @@ p:not(:last-child) {
       width: calc(12.5rem + 9.375 * (100vw - 20rem)/ 100)
     }
   }
-  @supports (height:clamp(3.75rem ,2.5rem + 6.25vw ,10rem)) {
+  @supports (height:clamp(3.4375rem ,2.1875rem + 6.25vw ,9.6875rem)) {
     .header-indent {
-      height: clamp(3.75rem ,2.5rem + 6.25vw ,10rem)
+      height: clamp(3.4375rem ,2.1875rem + 6.25vw ,9.6875rem)
     }
   }
-  @supports not (height:clamp(3.75rem ,2.5rem + 6.25vw ,10rem)) {
+  @supports not (height:clamp(3.4375rem ,2.1875rem + 6.25vw ,9.6875rem)) {
     .header-indent {
-      height: calc(3.75rem + 6.25 * (100vw - 20rem)/ 100)
+      height: calc(3.4375rem + 6.25 * (100vw - 20rem)/ 100)
     }
   }
   @supports (padding-top:clamp(6.25rem ,5.625rem + 3.125vw ,9.375rem)) {
@@ -3603,6 +3644,11 @@ p:not(:last-child) {
   .menu-item:hover .sub-menu-item {
     opacity: 1;
     margin-top: 0
+  }
+  .has-children:hover > a::after {
+    content: "";
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg)
   }
   .footer__logo:hover {
     -webkit-transform: translate(0,-2px);
